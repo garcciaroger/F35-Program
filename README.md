@@ -2,7 +2,8 @@
 
 A comprehensive educational web resource dedicated to the F-35 Lightning II Joint Strike Fighter program, featuring detailed technical specifications, variant information, global partnerships, and operational capabilities.
 
-![F-35 Lightning II](Images/30497430924_c7ea38e7fc_o.jpg)
+![1000w_q75](https://github.com/user-attachments/assets/9b9c9a6b-dd38-4a5e-a8ea-0351f6e23309)
+
 
 ## Project Overview
 
