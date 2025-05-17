@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F-35 Lightning II | Global Partnerships</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="partnership.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="partnership.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        tech: ['Rajdhani', 'sans-serif'],
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        'stealth': '#1a1f2e',
+                        'navy': '#0d1b2a',
+                        'accent': '#3a86ff',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+</head>
+<body class="font-sans bg-navy text-white">
+    <!-- Video Background -->
+    <div class="video-container">
+        <div id="yt-player"></div>
+        <div class="logo-blocker"></div>
+    </div>
+    
+    <!-- Content Overlay -->
+    <div class="content-overlay">
+        <!-- Navigation Bar -->
+        <nav class="fixed w-full z-50 transition-all duration-300" id="main-nav">
+            <div class="backdrop-blur-md bg-stealth">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-16 items-center">
+                        <!-- Logo -->
+                        <div class="flex-shrink-0 flex items-center">
+                                <a href="../Home-Page/index.html" class="mr-4">
+                                    <img src="Images/logo.png" alt="F-35 Lightning II Logo" class="h-12 w-auto">
+                                </a>
+                            <!-- Brand name -->
+                            <span class="font-tech font-bold text-2xl text-white tracking-wider">F-35<span class="text-accent">LIGHTNING II</span></span>
+                        </div>
+                        
+                            <!-- Desktop Navigation -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="../Home-Page/index.html" class="nav-link active text-white relative px-1 py-2 text-sm font-medium tracking-wide">
+                                OVERVIEW
+                                <div class="nav-indicator"></div>
+                            </a>
+                            <a href="../Specifications/specifications.html" class="nav-link text-gray-300 relative px-1 py-2 text-sm font-medium tracking-wide">
+                                SPECIFICATIONS
+                                <div class="nav-indicator"></div>
+                            </a>
+                            <a href="../Variants/varitans.html" class="nav-link text-gray-300 relative px-1 py-2 text-sm font-medium tracking-wide">
+                                VARIANTS
+                                <div class="nav-indicator"></div>
+                            </a>
+                            <a href="../Partnership/partnership.html" class="nav-link text-gray-300 relative px-1 py-2 text-sm font-medium tracking-wide">
+                                PARTNERSHIPS
+                                <div class="nav-indicator"></div>
+                            </a>
+                        </div>
+                        
+                        <!-- Mobile Menu Button -->
+                        <div class="md:hidden flex items-center">
+                            <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-black/30" aria-expanded="false" aria-controls="mobile-menu">
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden backdrop-blur-md bg-stealth">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="../Home-Page/index.html" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">OVERVIEW</a>
+                    <a href="../Specifications/specifications.html" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">SPECIFICATIONS</a>
+                    <a href="../Variants/varitans.html" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">VARIANTS</a>
+                    <a href="#" class="text-white block px-3 py-2 text-base font-medium border-l-2 border-accent">PARTNERSHIPS</a>
+                    <a href="../Home-Page/index.html#operations" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">OPERATIONS</a>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <div class="hero-content">
+            <div class="space-y-6 animate-fade-in-up">
+                <span class="inline-block px-3 py-1 bg-accent text-white font-tech uppercase tracking-widest text-xs font-semibold rounded-sm">Global Collaboration</span>
+                <h1 class="text-5xl md:text-7xl font-tech font-bold tracking-tight">GLOBAL <span class="text-accent">PARTNERSHIPS</span></h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-300 font-light">An unprecedented international coalition of 15 nations working together to develop and deploy the world's most advanced fighter</p>
+                
+                <div class="mt-10">
+                    <a href="#partnership-map" class="group inline-flex items-center bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 hover:translate-y-[-2px]">
+                        EXPLORE PARTNERSHIPS
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partnership Tiers Section -->
+        <section id="partnership-tiers" class="py-20 bg-gradient-to-b from-navy to-stealth">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Partnership Structure</span>
+                    <h2 class="text-4xl md:text-5xl font-tech font-bold tracking-tight mb-4">TIERED <span class="text-accent">COOPERATION</span></h2>
+                    <p class="max-w-3xl mx-auto text-gray-300 text-lg">Nations participate in the F-35 program through a structured partnership model that determines investment, industrial participation, and technology access</p>
+                </div>
+                
+                <!-- Partnership Tiers Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Level I Partners -->
+                    <div class="bg-stealth/50 rounded-lg p-6 border border-accent/30 hover:border-accent/60 transition-colors duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                                <span class="font-tech text-2xl text-accent font-bold">I</span>
+                            </div>
+                            <h3 class="font-tech text-xl text-white">LEVEL I PARTNER</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">Highest level of partnership with significant financial investment and industrial participation.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <img src="https://flagcdn.com/w40/gb.png" width="20" class="mr-2" alt="UK flag">
+                                <span class="text-white">United Kingdom</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-accent/20">
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    $2+ billion investment
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Full technology transfer
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Manufacturing and final assembly
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Level II Partners -->
+                    <div class="bg-stealth/50 rounded-lg p-6 border border-accent/30 hover:border-accent/60 transition-colors duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                                <span class="font-tech text-2xl text-accent font-bold">II</span>
+                            </div>
+                            <h3 class="font-tech text-xl text-white">LEVEL II PARTNERS</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">Substantial program investment with technological development opportunities.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <img src="https://flagcdn.com/w40/it.png" width="20" class="mr-2" alt="Italy flag">
+                                <span class="text-white">Italy</span>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://flagcdn.com/w40/nl.png" width="20" class="mr-2" alt="Netherlands flag">
+                                <span class="text-white">Netherlands</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-accent/20">
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    $1 billion investment
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Component manufacturing
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Regional maintenance facilities
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Level III Partners -->
+                    <div class="bg-stealth/50 rounded-lg p-6 border border-accent/30 hover:border-accent/60 transition-colors duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                                <span class="font-tech text-2xl text-accent font-bold">III</span>
+                            </div>
+                            <h3 class="font-tech text-xl text-white">LEVEL III PARTNERS</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">Limited partnership with focused industrial participation in specific areas.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <img src="https://flagcdn.com/w40/au.png" width="20" class="mr-2" alt="Australia flag">
+                                <span class="text-white">Australia</span>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://flagcdn.com/w40/dk.png" width="20" class="mr-2" alt="Denmark flag">
+                                <span class="text-white">Denmark</span>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://flagcdn.com/w40/no.png" width="20" class="mr-2" alt="Norway flag">
+                                <span class="text-white">Norway</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-accent/20">
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    $100-$250 million investment
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Specific component production
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    Limited technology sharing
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FMS Customers -->
+                <div class="bg-stealth/30 rounded-lg p-8 border border-accent/10">
+                    <h3 class="font-tech text-2xl text-white mb-4">FOREIGN MILITARY SALES (FMS) CUSTOMERS</h3>
+                    <p class="text-gray-300 mb-6">Nations that purchase the F-35 through direct commercial agreements rather than development partnerships.</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <div class="flex items-center p-3 bg-stealth/60 rounded-lg">
+                            <img src="https://flagcdn.com/w40/il.png" width="20" class="mr-2" alt="Israel flag">
+                            <span class="text-white">Israel</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-stealth/60 rounded-lg">
+                            <img src="https://flagcdn.com/w40/jp.png" width="20" class="mr-2" alt="Japan flag">
+                            <span class="text-white">Japan</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-stealth/60 rounded-lg">
+                            <img src="https://flagcdn.com/w40/kr.png" width="20" class="mr-2" alt="South Korea flag">
+                            <span class="text-white">South Korea</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-stealth/60 rounded-lg">
+                            <img src="https://flagcdn.com/w40/pl.png" width="20" class="mr-2" alt="Poland flag">
+                            <span class="text-white">Poland</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-stealth/60 rounded-lg">
+                            <img src="https://flagcdn.com/w40/be.png" width="20" class="mr-2" alt="Belgium flag">
+                            <span class="text-white">Belgium</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-stealth/60 rounded-lg">
+                            <img src="https://flagcdn.com/w40/sg.png" width="20" class="mr-2" alt="Singapore flag">
+                            <span class="text-white">Singapore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economic Impact Section -->
+        <section class="py-20 bg-gradient-to-b from-stealth to-navy">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Global Supply Chain</span>
+                    <h2 class="text-4xl md:text-5xl font-tech font-bold tracking-tight mb-4">ECONOMIC <span class="text-accent">IMPACT</span></h2>
+                    <p class="max-w-3xl mx-auto text-gray-300 text-lg">The F-35 program generates thousands of jobs across partner nations and drives technological advancement in aerospace manufacturing</p>
+                </div>
+                
+                <!-- Economic Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="bg-stealth/50 rounded-lg p-6 text-center">
+                        <div class="text-4xl md:text-5xl font-tech text-accent mb-2">300K+</div>
+                        <div class="text-white font-tech text-lg mb-1">JOBS SUPPORTED</div>
+                        <div class="text-gray-300 text-sm">Across 15 partner nations</div>
+                    </div>
+                    
+                    <div class="bg-stealth/50 rounded-lg p-6 text-center">
+                        <div class="text-4xl md:text-5xl font-tech text-accent mb-2">1,500+</div>
+                        <div class="text-white font-tech text-lg mb-1">SUPPLIERS</div>
+                        <div class="text-gray-300 text-sm">Global supply chain contributors</div>
+                    </div>
+                    
+                    <div class="bg-stealth/50 rounded-lg p-6 text-center">
+                        <div class="text-4xl md:text-5xl font-tech text-accent mb-2">$175B</div>
+                        <div class="text-white font-tech text-lg mb-1">TOTAL IMPACT</div>
+                        <div class="text-gray-300 text-sm">Estimated economic impact through 2035</div>
+                    </div>
+                    
+                    <div class="bg-stealth/50 rounded-lg p-6 text-center">
+                        <div class="text-4xl md:text-5xl font-tech text-accent mb-2">45+</div>
+                        <div class="text-white font-tech text-lg mb-1">U.S. STATES</div>
+                        <div class="text-gray-300 text-sm">With F-35 related operations</div>
+                    </div>
+                </div>
+                
+                <!-- Industry Feature -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h3 class="font-tech text-2xl text-white mb-6">TECHNOLOGICAL ADVANCEMENT</h3>
+                        <p class="text-gray-300 mb-4">The F-35 program drives innovation across multiple industries, from advanced materials to electronic systems and manufacturing processes.</p>
+                        <p class="text-gray-300 mb-6">Partner nations gain valuable technology transfer opportunities, strengthening their domestic aerospace industries while contributing to the most advanced fighter jet ever built.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-tech mb-1">Advanced Manufacturing</h4>
+                                    <p class="text-sm text-gray-300">Revolutionary manufacturing techniques developed specifically for F-35 production have been adopted across aerospace industries.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-tech mb-1">Composite Materials</h4>
+                                    <p class="text-sm text-gray-300">Advancements in carbon fiber composites for the F-35 airframe have led to civilian applications across multiple industries.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative h-80 rounded-lg overflow-hidden group">
+                        <img src="Images/f_35_manufactoring.jpg" 
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                             alt="F-35 Manufacturing">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                            <p class="font-tech text-sm text-accent">F-35 component manufacturing at FACO facility in Cameri, Italy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fort Worth Facility Section -->
+        <section class="py-20 bg-gradient-to-b from-stealth to-navy">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Manufacturing Hub</span>
+                    <h2 class="text-4xl md:text-5xl font-tech font-bold tracking-tight mb-4">FORT WORTH <span class="text-accent">FACILITY</span></h2>
+                    <p class="max-w-3xl mx-auto text-gray-300 text-lg">The heart of the global F-35 program, Lockheed Martin's mile-long production line in Fort Worth, Texas produces the majority of all F-35 aircraft</p>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+                    <!-- Left Content - Image Column -->
+                    <div class="lg:col-span-3 relative rounded-lg overflow-hidden">
+                        <img src="Images/f35_factory.jpg" 
+                             alt="Fort Worth F-35 Assembly Line" 
+                             class="w-full h-auto object-cover rounded-lg shadow-lg">
+                        <div class="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm p-4 font-tech text-sm">
+                            <p class="text-accent">F-35 Lightning II aircraft on the production line at Lockheed Martin's Fort Worth facility</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content - Stats Column -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <div>
+                            <h3 class="font-tech text-2xl text-white mb-4">THE WORLD'S LARGEST FIGHTER FACTORY</h3>
+                            <p class="text-gray-300 mb-6">The Fort Worth production facility spans over 2.7 million square feet of manufacturing space dedicated to F-35 production, supporting the global partnership's demand for aircraft.</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- Production Capacity -->
+                            <div class="bg-stealth/40 p-4 rounded-lg border border-accent/20">
+                                <div class="flex items-center mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                    </svg>
+                                    <h4 class="font-tech text-lg text-white">PRODUCTION CAPACITY</h4>
+                                </div>
+                                <p class="text-gray-300 pl-9">Up to 156 aircraft per year at full rate production</p>
+                            </div>
+                            
+                            <!-- Workforce -->
+                            <div class="bg-stealth/40 p-4 rounded-lg border border-accent/20">
+                                <div class="flex items-center mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                    <h4 class="font-tech text-lg text-white">WORKFORCE</h4>
+                                </div>
+                                <p class="text-gray-300 pl-9">Over 18,000 skilled employees dedicated to the program</p>
+                            </div>
+                            
+                            <!-- Advanced Technology -->
+                            <div class="bg-stealth/40 p-4 rounded-lg border border-accent/20">
+                                <div class="flex items-center mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                    <h4 class="font-tech text-lg text-white">SMART FACTORY</h4>
+                                </div>
+                                <p class="text-gray-300 pl-9">Industry 4.0 automated systems with augmented reality for assembly</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Economic Impact -->
+                        <div class="mt-6 pt-6 border-t border-accent/20">
+                            <h4 class="font-tech text-lg text-white mb-3">ECONOMIC IMPACT</h4>
+                            <p class="text-gray-300">The Fort Worth facility generates over $10 billion in annual economic impact for Texas and supports more than 55,000 indirect jobs through its supply chain.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                    <!-- Advanced Manufacturing -->
+                    <div class="bg-stealth/30 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            </div>
+                            <h3 class="font-tech text-white text-lg">ADVANCED MANUFACTURING</h3>
+                        </div>
+                        <p class="text-gray-300">Robotic painting systems apply radar-absorbing materials with precision accuracy impossible to achieve by hand.</p>
+                    </div>
+                    
+                    <!-- Digital Thread -->
+                    <div class="bg-stealth/30 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-tech text-white text-lg">DIGITAL THREAD</h3>
+                        </div>
+                        <p class="text-gray-300">Each aircraft is tracked digitally from first component to final delivery, ensuring perfect parts alignment and lifecycle management.</p>
+                    </div>
+                    
+                    <!-- Supply Chain -->
+                    <div class="bg-stealth/30 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020 5.5v-1.5" />
+                                </svg>
+                            </div>
+                            <h3 class="font-tech text-white text-lg">GLOBAL INTEGRATION</h3>
+                        </div>
+                        <p class="text-gray-300">Components arrive from partners worldwide for final assembly, with 70-80% of each aircraft's value coming from the extended supplier network.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!-- Partnership Information Call to Action Section -->
+        <section class="py-20 relative overflow-hidden">
+            <!-- Background with gradient overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="Images/f_35_at_night.jpg" alt="F-35s in international formation" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-stealth"></div>
+            </div>
+            
+            <!-- Background accent elements -->
+            <div class="absolute top-0 right-0 w-1/2 h-px bg-accent/20 rotate-45 z-10"></div>
+            <div class="absolute bottom-0 left-0 w-1/2 h-px bg-accent/20 -rotate-45 z-10"></div>
+            
+            <!-- Circular radar-like background element -->
+            <div class="absolute -right-40 -bottom-40 w-96 h-96 rounded-full border-2 border-accent/10 opacity-20 z-10"></div>
+            <div class="absolute -right-20 -bottom-20 w-64 h-64 rounded-full border-2 border-accent/10 opacity-30 z-10"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left content side -->
+                    <div>
+                        <div class="mb-3">
+                            <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm backdrop-blur-sm">Global Collaboration</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-tech font-bold tracking-tight mb-6">LEARN MORE ABOUT <span class="text-accent glow-text">F-35 PARTNERSHIPS</span></h2>
+                        <p class="text-gray-300 text-lg mb-8">The F-35 program represents one of the largest international defense collaborations in history, with partner nations contributing to development, production, and sustainment across the global fleet.</p>
+                        
+                        <div class="flex flex-wrap gap-4 mb-12">
+                            <a href="#partnership-map" class="inline-flex items-center bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md font-tech transition-all duration-300 hover:translate-y-[-2px] shadow-lg shadow-accent/20">
+                                <span>EXPLORE PARTNERSHIP MAP</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                            <a href="#international-facilities" class="inline-flex items-center bg-transparent border border-accent/50 hover:border-accent text-accent hover:bg-accent/10 px-6 py-3 rounded-md font-tech transition-all duration-300">
+                                VIEW GLOBAL FACILITIES
+                            </a>
+                        </div>
+                        
+                        <!-- Key statistics -->
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="bg-stealth/60 backdrop-blur-sm p-4 rounded-md border border-accent/20">
+                                <p class="text-accent font-tech text-3xl mb-1">15</p>
+                                <p class="text-gray-400 text-xs uppercase tracking-wider">Partner Nations</p>
+                            </div>
+                            <div class="bg-stealth/60 backdrop-blur-sm p-4 rounded-md border border-accent/20">
+                                <p class="text-accent font-tech text-3xl mb-1">3</p>
+                                <p class="text-gray-400 text-xs uppercase tracking-wider">Partner Tiers</p>
+                            </div>
+                            <div class="bg-stealth/60 backdrop-blur-sm p-4 rounded-md border border-accent/20">
+                                <p class="text-accent font-tech text-3xl mb-1">1,500+</p>
+                                <p class="text-gray-400 text-xs uppercase tracking-wider">Global Suppliers</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side resources -->
+                    <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-accent/30 shadow-xl shadow-accent/5 p-6">
+                        <h3 class="font-tech text-2xl text-white mb-4">F-35 PARTNERSHIP RESOURCES</h3>
+                        <p class="text-gray-300 text-sm mb-6">Learn more about the unprecedented international collaboration behind the F-35 Lightning II program through these educational resources.</p>
+                        
+                        <div class="space-y-4">
+                            <a href="#" class="group flex items-center p-4 bg-navy/50 rounded-md border border-accent/20 hover:border-accent/40 transition-all duration-300">
+                                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent/20 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-tech text-lg">Partnership Structure Guide</h4>
+                                    <p class="text-sm text-gray-300">Detailed overview of the three-tier partnership model</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="group flex items-center p-4 bg-navy/50 rounded-md border border-accent/20 hover:border-accent/40 transition-all duration-300">
+                                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent/20 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-tech text-lg">International Facilities Map</h4>
+                                    <p class="text-sm text-gray-300">Global production, maintenance and training locations</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="group flex items-center p-4 bg-navy/50 rounded-md border border-accent/20 hover:border-accent/40 transition-all duration-300">
+                                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent/20 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-tech text-lg">Economic Impact Report</h4>
+                                    <p class="text-sm text-gray-300">Analysis of F-35 program effects across partner nations</p>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="mt-6 pt-6 border-t border-accent/20">
+                            <a href="https://www.f35.com/f35/global-enterprise.html" target="_blank" rel="noopener" class="flex items-center justify-center bg-accent/20 hover:bg-accent/30 text-accent font-tech py-3 rounded-md transition-colors">
+                                <span>VISIT OFFICIAL F-35 PROGRAM WEBSITE</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Style for glow effect -->
+            <style>
+                .glow-text {
+                    text-shadow: 0 0 10px rgba(58, 134, 255, 0.5);
+                }
+            </style>
+        </section>
+
+        <!-- Training and Maintenance Section -->
+        <section class="py-20 bg-gradient-to-b from-navy to-stealth">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Global Support</span>
+                    <h2 class="text-4xl md:text-5xl font-tech font-bold tracking-tight mb-4">INTERNATIONAL <span class="text-accent">INFRASTRUCTURE</span></h2>
+                    <p class="max-w-3xl mx-auto text-gray-300 text-lg">A worldwide network of training centers, maintenance facilities, and logistics hubs support the global F-35 fleet</p>
+                </div>
+                
+                <!-- Global Centers Map -->
+                <div class="bg-stealth/50 rounded-lg p-6 mb-16">
+                    <h3 class="font-tech text-2xl text-white mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                        GLOBAL TRAINING & MAINTENANCE HUBS
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- USA -->
+                        <div class="bg-stealth hover:bg-stealth/80 transition-colors p-5 rounded-lg border border-accent/30">
+                            <div class="flex items-center mb-3">
+                                <img src="https://flagcdn.com/w40/us.png" width="24" class="mr-2" alt="USA flag">
+                                <h4 class="font-tech text-white text-lg">UNITED STATES</h4>
+                            </div>
+                            <ul class="space-y-2 pl-0">
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Eglin AFB, Florida (Training)
+                                </li>
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Luke AFB, Arizona (Training)
+                                </li>
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Hill AFB, Utah (ALIS/Logistics)
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Europe -->
+                        <div class="bg-stealth hover:bg-stealth/80 transition-colors p-5 rounded-lg border border-accent/30">
+                            <div class="flex items-center mb-3">
+                                <img src="https://flagcdn.com/w40/eu.png" width="24" class="mr-2" alt="EU flag">
+                                <h4 class="font-tech text-white text-lg">EUROPE</h4>
+                            </div>
+                            <ul class="space-y-2 pl-0">
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Cameri, Italy (FACO)
+                                </li>
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    RAF Marham, UK (Maintenance)
+                                </li>
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Woensdrecht, Netherlands (Logistics)
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Asia-Pacific -->
+                        <div class="bg-stealth hover:bg-stealth/80 transition-colors p-5 rounded-lg border border-accent/30">
+                            <div class="flex items-center mb-3">
+                                <span class="w-6 h-4 bg-accent/30 rounded mr-2 flex-shrink-0"></span>
+                                <h4 class="font-tech text-white text-lg">ASIA-PACIFIC</h4>
+                            </div>
+                            <ul class="space-y-2 pl-0">
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Nagoya, Japan (FACO)
+                                </li>
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Williamtown, Australia (Training)
+                                </li>
+                                <li class="flex items-start text-sm text-gray-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Cheongju, South Korea (Maintenance)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Facility -->
+                <div class="bg-stealth rounded-lg overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8">
+                            <h3 class="font-tech text-2xl text-white mb-4">FEATURED FACILITY: CAMERI FACO</h3>
+                            <p class="text-gray-300 mb-6">The Final Assembly and Check-Out (FACO) facility in Cameri, Italy is one of only two such facilities outside the United States. This state-of-the-art manufacturing center produces F-35A and F-35B aircraft for the Italian and Dutch armed forces.</p>
+                            
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="text-gray-300">1 million square feet of production space</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="text-gray-300">Capacity to produce up to 8 aircraft per year</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="text-gray-300">Also produces wing assemblies for the entire F-35 program</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative h-full min-h-[300px]">
+                            <img src="Images/cameri_facao.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Cameri FACO Facility">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Footer -->
+        <section class="py-16 bg-gradient-to-b from-stealth to-navy">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-stealth/60 backdrop-blur-sm rounded-lg p-8 text-center">
+                    <h2 class="font-tech text-3xl md:text-4xl text-white mb-4">THE FUTURE OF GLOBAL COOPERATION</h2>
+                    <p class="text-gray-300 max-w-3xl mx-auto mb-8">The F-35 program continues to expand, with more nations joining this unprecedented international partnership.</p>
+                    <a href="../Home-Page/index.html#contact" class="inline-flex items-center bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 hover:translate-y-[-2px]">
+                        REQUEST PROGRAM BRIEFING
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="bg-stealth py-16 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <!-- Column 1: Logo & Description -->
+                    <div class="md:col-span-1">
+                        <div class="flex items-center mb-5">
+                            <!-- Logo Image (Added from navbar) -->
+                            <a href="../Home-Page/index.html" class="mr-2">
+                                <img src="Images/logo.png" alt="F-35 Lightning II Logo" class="h-8 w-auto">
+                            </a>
+                            <!-- Brand name -->
+                            <span class="font-tech font-bold text-lg text-white tracking-wider">F-35<span class="text-accent">LIGHTNING II</span></span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6">An educational resource about the F-35 Lightning II Joint Strike Fighter program.</p>
+                        <p class="text-xs text-gray-500">This site is for informational purposes only and is not affiliated with Lockheed Martin, the Department of Defense, or any official F-35 program entities.</p>
+                    </div>
+                    <!-- Column 2: Quick Links -->
+                    <div class="md:col-span-1">
+                        <h4 class="font-tech text-lg mb-5 text-white">QUICK LINKS</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#variants" class="text-gray-400 hover:text-accent transition-colors text-sm">Variants</a></li>
+                            <li><a href="#partnerships" class="text-gray-400 hover:text-accent transition-colors text-sm">Global Partnerships</a></li>
+                            <li><a href="#operations" class="text-gray-400 hover:text-accent transition-colors text-sm">Operational History</a></li>
+                            <li><a href="#gallery" class="text-gray-400 hover:text-accent transition-colors text-sm">Media Gallery</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Column 3: Resources -->
+                    <div class="md:col-span-1">
+                        <h4 class="font-tech text-lg mb-5 text-white">RESOURCES</h4>
+                        <ul class="space-y-3">
+                            <li><a href="../Specifications/specifications.html" class="text-gray-400 hover:text-accent transition-colors text-sm">Technical Specifications</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors text-sm">F-35 Variants Comparison</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors text-sm">About This Project</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors text-sm">Image Credits</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Column 4: Newsletter -->
+                    <div class="md:col-span-1">
+                        <h4 class="font-tech text-lg mb-5 text-white">UPDATES</h4>
+                        <p class="text-gray-400 text-sm mb-4">Stay informed about updates to this educational resource.</p>
+                        <form class="space-y-3">
+                            <div>
+                                <input type="email" placeholder="Your email address" class="w-full bg-navy/70 text-white border border-gray-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent">
+                            </div>
+                            <button type="submit" class="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300">SUBSCRIBE</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Bottom Section -->
+                <div class="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-xs mb-4 md:mb-0">© 2025 F-35 Information Resource. Not affiliated with any official F-35 program entities.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-accent">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub" class="text-gray-400 hover:text-accent">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-accent">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div> 
+</body>
+</html>

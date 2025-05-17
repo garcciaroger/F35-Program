@@ -1,0 +1,344 @@
+/* F-35 Hero and Navigation Styles */
+.video-container {
+    position: fixed !important; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none; 
+  }
+  
+  #yt-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+    object-fit: cover;  
+  }
+  
+  .video-container iframe,
+  #yt-player iframe {
+    position: absolute;
+    width: 100vw !important;
+    height: 120vh !important; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    object-fit: cover;
+  }
+
+  .video-container iframe {
+    opacity: 0.99; /* Prevents YouTube logo overlay */
+  }
+
+  .ytp-pause-overlay,
+  .ytp-chrome-top,
+  .ytp-chrome-bottom,
+  .ytp-watermark,
+  .ytp-iv-player-content,
+  .ytp-gradient-top,
+  .ytp-gradient-bottom,
+  .ytp-show-cards-title {
+    display: none !important;
+  }
+  
+  /* Content Overlay */
+  .content-overlay {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.4) 0%,
+      rgba(13,27,42,0.8) 85%,
+      #0d1b2a 100%
+    );
+  }
+  
+  .logo-blocker {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  section {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Hero Section */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 0 1rem;
+  }
+  
+  /* Navigation */
+  .nav-indicator {
+    transition: all 0.3s ease;
+    height: 2px;
+    background-color: #3a86ff;
+    width: 0;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+  }
+  
+  .nav-link {
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover .nav-indicator {
+    width: 100%;
+  }
+  
+  .nav-link.active .nav-indicator {
+    width: 100%;
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1a1f2e;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #3a86ff;
+    border-radius: 3px;
+  }
+  
+  /* Variants Section Styles */
+  .variant-tab {
+    transition: all 0.3s ease;
+    color: #9ca3af; /* text-gray-400 */
+  }
+  
+  .variant-tab.active {
+    background-color: rgba(58, 134, 255, 0.2); /* bg-accent/20 */
+    color: #fff;
+    border-color: #3a86ff; /* border-accent */
+  }
+  
+  .variant-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .variant-content.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Style for active thumbnail */
+  .active-thumbnail {
+    border-color: #3a86ff !important;
+  }
+
+  /* Scanner animation effect */
+  .scanner-line {
+      top: 0;
+      left: -100%;
+      height: 2px;
+      width: 200%;
+      background: linear-gradient(to right, 
+          transparent 0%, 
+          rgba(58, 134, 255, 0.2) 20%, 
+          rgba(58, 134, 255, 0.8) 50%,
+          rgba(58, 134, 255, 0.2) 80%,
+          transparent 100%);
+      opacity: 0;
+      animation: none;
+      transition: opacity 0.3s;
+      z-index: 2;
+  }
+
+  .group:hover .scanner-line {
+      opacity: 1;
+      animation: scan-line 1.5s ease-out forwards;
+  }
+
+  @keyframes scan-line {
+      0% { 
+          top: 0; 
+          left: -100%; 
+          opacity: 1;
+      }
+      100% { 
+          top: 100%; 
+          left: -100%; 
+          opacity: 0.5;
+      }
+  }
+
+  /* Caption frame with tech corners */
+  .caption-container {
+      max-width: 80%;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.5s ease;
+  }
+
+  .group:hover .caption-container {
+      transform: translateY(0);
+      opacity: 1;
+  }
+
+  .caption-frame {
+      position: relative;
+      padding: 18px;
+      border: 1px solid rgba(58, 134, 255, 0.3);
+      background: rgba(26, 31, 46, 0.7);
+      backdrop-filter: blur(4px);
+  }
+
+  /* Tech corners */
+  .caption-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: #3a86ff;
+      z-index: 1;
+  }
+
+  .top-left {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid;
+      border-left: 2px solid;
+  }
+
+  .top-right {
+      top: -1px;
+      right: -1px;
+      border-top: 2px solid;
+      border-right: 2px solid;
+  }
+
+  .bottom-left {
+      bottom: -1px;
+      left: -1px;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+  }
+
+  .bottom-right {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+  }
+
+  /* Typewriter text effect */
+  .typewriter-text {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      width: 0;
+      animation: none;
+  }
+
+  .group:hover .typewriter-text {
+      animation: typing 1s steps(40, end) forwards;
+      animation-delay: 0.5s;
+  }
+
+  @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+  }
+
+  .caption-content {
+      position: relative;
+      z-index: 3;
+  }
+
+  /* Stealth View Panels */
+  .stealth-view-panel {
+      position: relative;
+      transition: opacity 0.4s ease-in-out;
+  }
+
+  .stealth-view-panel.hidden {
+      display: none;
+  }
+
+  /* Stealth View Buttons */
+  .stealth-view-btn {
+      position: relative;
+      transition: all 0.3s ease;
+  }
+
+  .stealth-view-btn.active-view {
+      color: #3a86ff;
+      background-color: rgba(58, 134, 255, 0.2);
+      border-color: rgba(58, 134, 255, 0.5);
+  }
+
+  .stealth-view-btn.active-view::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #3a86ff;
+  }
+
+  /* Responsive video container for aspect ratio */
+  .aspect-w-16 {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+  }
+
+  .aspect-w-16 > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  /* Video frame styling */
+  .video-frame {
+      padding: 2px;
+      box-shadow: 0 0 20px rgba(58, 134, 255, 0.2);
+  }
+

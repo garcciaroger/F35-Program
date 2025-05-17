@@ -1,0 +1,338 @@
+/* F-35 Hero and Navigation Styles */
+
+/* Video Background*/
+.video-container {
+  position: fixed !important; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none; 
+}
+
+#yt-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none; 
+  object-fit: cover;  
+}
+
+.video-container iframe,
+#yt-player iframe {
+  position: absolute;
+  width: 100vw !important;
+  height: 120vh !important; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  object-fit: cover;
+}
+
+/* Hide YouTube logo */
+.video-container iframe {
+  opacity: 0.99; 
+}
+
+/* Hide YouTube video annotations and info cards */
+.ytp-pause-overlay,
+.ytp-chrome-top,
+.ytp-chrome-bottom,
+.ytp-watermark,
+.ytp-iv-player-content,
+.ytp-gradient-top,
+.ytp-gradient-bottom,
+.ytp-show-cards-title {
+  display: none !important;
+}
+
+/* Content Overlay */
+.content-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.4) 0%,
+    rgba(13,27,42,0.8) 85%,
+    #0d1b2a 100%
+  );
+}
+
+/* Logo blocker for YouTube branding */
+.logo-blocker {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Ensure proper section arrangement */
+section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero Section */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 0 1rem;
+}
+
+/* Navigation */
+.nav-indicator {
+  transition: all 0.3s ease;
+  height: 2px;
+  background-color: #3a86ff;
+  width: 0;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover .nav-indicator {
+  width: 100%;
+}
+
+.nav-link.active .nav-indicator {
+  width: 100%;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1f2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a86ff;
+  border-radius: 3px;
+}
+
+/* Variants Section Styles */
+.variant-tab {
+  transition: all 0.3s ease;
+  color: #9ca3af; /* text-gray-400 */
+}
+
+.variant-tab.active {
+  background-color: rgba(58, 134, 255, 0.2); /* bg-accent/20 */
+  color: #fff;
+  border-color: #3a86ff; /* border-accent */
+}
+
+.variant-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.variant-content.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* World Map Styling */
+.bg-grid-overlay {
+  background-image: linear-gradient(rgba(58, 134, 255, 0.05) 1px, transparent 1px), 
+                    linear-gradient(90deg, rgba(58, 134, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.partner-country {
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+
+.partner-country:hover {
+  fill: #3a86ff;
+  fill-opacity: 0.8;
+}
+
+/* Animation for map indicators */
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Partner countries hover effect */
+[data-country]:hover + .country-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Map container styling */
+
+#partnership-map {
+  width: 100%;
+  height: 400px; /* You can adjust this */
+  background-color: #0d1b2a;
+  position: relative;
+  overflow: hidden;
+}
+
+.am4-scrollbar-horizontal {
+  display: none !important;
+}
+
+.am4-scrollbar-vertical {
+  display: none !important;
+}
+
+.am4-tooltip-container .am4-tooltip-label {
+  background-color: #1a1f2e !important;
+  border: 1px solid #3a86ff !important;
+  color: white !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 12px !important;
+  padding: 8px !important;
+}
+
+#partnership-map .absolute {
+  position: relative !important;
+}
+
+/* Timeline interaction styles */
+.timeline-entry {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-details {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.timeline-expanded {
+    transform: scale(1.02);
+}
+
+.timeline-marker {
+    transition: all 0.3s ease;
+}
+
+.timeline-entry:hover .timeline-marker {
+    transform: scale(1.3);
+}
+
+/* Progress bar for timeline */
+.timeline-progress {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background-color: #3a86ff;
+    z-index: 5;
+    top: 0;
+    height: 0; /* Start at 0 */
+    transition: height 0.3s ease;
+}
+
+/* Timeline entry hover effect */
+.timeline-details::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #3a86ff, transparent);
+    transition: width 0.3s ease;
+}
+
+.timeline-details:hover::after {
+    width: 100%;
+}
+
+/* Pulse animation for timeline nodes */
+@keyframes timeline-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(58, 134, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 134, 255, 0);
+    }
+}
+
+.animate-timeline-pulse {
+    animation: timeline-pulse 2s infinite;
+}
+
+#operations .hidden.md\:block.absolute.left-1\/2 {
+    position: absolute;
+    height: auto; /* Override h-full */
+    top: 0;
+    bottom: 0;
+    transition: top 0.5s ease, height 0.5s ease;
+}

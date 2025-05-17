@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F-35 Lightning II | 5th Generation Fighter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        tech: ['Rajdhani', 'sans-serif'],
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        'stealth': '#1a1f2e',
+                        'navy': '#0d1b2a',
+                        'accent': '#3a86ff',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="index.js" defer></script>
+</head>
+<body class="font-sans bg-navy text-white">
+    <!-- Video Background -->
+    <div class="video-container">
+        <div id="yt-player"></div>
+        <div class="logo-blocker"></div>
+    </div>
+    <!-- Content Overlay -->
+    <div class="content-overlay">
+     <!-- Navigation Bar - updated to remove transparency -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="main-nav">
+        <div class="backdrop-blur-md bg-stealth">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Logo Image -->
+                        <a href="../Home-Page/index.html" class="mr-4">
+                            <img src="Images/logo.png" alt="F-35 Lightning II Logo" class="h-12 w-auto">
+                        </a>
+                        <!-- Brand name -->
+                        <span class="font-tech font-bold text-2xl text-white tracking-wider">F-35<span class="text-accent">LIGHTNING II</span></span>
+                    </div>
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="../Home-Page/index.html" class="nav-link active text-white relative px-1 py-2 text-sm font-medium tracking-wide">
+                            OVERVIEW
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="../Specifications/specifications.html" class="nav-link text-gray-300 relative px-1 py-2 text-sm font-medium tracking-wide">
+                            SPECIFICATIONS
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="../Variants/varitans.html" class="nav-link text-gray-300 relative px-1 py-2 text-sm font-medium tracking-wide">
+                            VARIANTS
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="../Partnership/partnership.html" class="nav-link text-gray-300 relative px-1 py-2 text-sm font-medium tracking-wide">
+                            PARTNERSHIPS
+                            <div class="nav-indicator"></div>
+                        </a>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-black/30" aria-expanded="false" aria-controls="mobile-menu">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu - also updated to remove transparency -->
+        <div id="mobile-menu" class="hidden md:hidden backdrop-blur-md bg-stealth">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../Home-Page/index.html" class="text-white block px-3 py-2 text-base font-medium border-l-2 border-accent">OVERVIEW</a>
+                <a href="../Specifications/specifications.html" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">SPECIFICATIONS</a>
+                <a href="../Variants/varitans.html" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">VARIANTS</a>
+                <a href="../Partnership/partnership.html" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">PARTNERSHIPS</a>
+                <a href="../Home-Page/index.html#operations" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">OPERATIONS</a>
+            </div>
+        </div>
+    </nav>
+        <!-- Hero Section -->
+        <div class="hero-content">
+            <div class="space-y-6 animate-fade-in-up">
+                <span class="inline-block px-3 py-1 bg-accent text-white font-tech uppercase tracking-widest text-xs font-semibold rounded-sm">5th Generation</span>
+                <h1 class="text-5xl md:text-7xl font-tech font-bold tracking-tight">F-35 <span class="text-accent">LIGHTNING II</span></h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-300 font-light">Redefining air dominance with unmatched stealth, sensor fusion and combat capabilities</p>
+                
+                <div class="mt-10">
+                    <a href="#" class="group inline-flex items-center bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 hover:translate-y-[-2px]">
+                        EXPLORE CAPABILITIES
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Variants Section -->
+        <section id="variants" class="py-20 bg-gradient-to-b from-navy via-stealth to-navy">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Versatility</span>
+                    <h2 class="text-4xl md:text-5xl font-tech font-bold mb-4">F-35 <span class="text-accent">VARIANTS</span></h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">One platform, three distinct variants to meet unique operational requirements</p>
+                </div>
+                <!-- Variants Selector -->
+                <div class="variant-selector flex justify-center mb-10">
+                    <div class="inline-flex rounded-md shadow-sm" role="group">
+                        <button type="button" class="variant-tab active px-6 py-3 font-tech text-sm font-medium border border-gray-700 rounded-l-lg hover:bg-accent/20 focus:z-10 focus:ring-2 focus:ring-accent" data-variant="a">
+                            F-35A
+                        </button>
+                        <button type="button" class="variant-tab px-6 py-3 font-tech text-sm font-medium border border-gray-700 hover:bg-accent/20 focus:z-10 focus:ring-2 focus:ring-accent" data-variant="b">
+                            F-35B
+                        </button>
+                        <button type="button" class="variant-tab px-6 py-3 font-tech text-sm font-medium border border-gray-700 rounded-r-lg hover:bg-accent/20 focus:z-10 focus:ring-2 focus:ring-accent" data-variant="c">
+                            F-35C
+                        </button>
+                    </div>
+                </div>
+                <!-- Variants Content Container -->
+                <div class="variants-content">
+                    <!-- F-35A Content -->
+                    <div class="variant-content active" id="variant-a">
+                        <div class="flex flex-col lg:flex-row items-center">
+                            <!-- Aircraft Image/Silhouette -->
+                            <div class="lg:w-1/2 mb-10 lg:mb-0 relative">
+                                <div class="aspect-[16/9] relative">
+                                    <div class="absolute inset-0 bg-accent/10 rounded-lg overflow-hidden">
+                                        <!-- F-35A Image -->
+                                        <img src="Images/double_f35.jpg" alt="F-35A CTOL Variant" class="object-cover w-full h-full">
+                                        <!-- Semi-transparent overlay to ensure text readability -->
+                                        <div class="absolute inset-0 bg-navy/30"></div>
+                                        <!-- Distinguishing Feature Callout -->
+                                        <div class="absolute top-[50%] left-[49.50%]">
+                                            <div class="h-10 border-l-2 border-accent/50"></div>
+                                            <div class="bg-stealth/80 backdrop-blur-sm p-3 rounded border border-accent/30 text-xs text-gray-300 w-40 mt-2">
+                                                <span class="font-tech text-accent">INTERNAL CANNON</span><br>
+                                                GAU-22/A 25mm cannon system integrated within airframe
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-4 bg-stealth/80 backdrop-blur-sm p-2 rounded text-xs font-tech">
+                                    <span class="text-gray-400">CTOL VARIANT</span>
+                                </div>
+                            </div>
+                            <!-- Variant Info -->
+                            <div class="lg:w-1/2 lg:pl-12">
+                                <div class="mb-6">
+                                    <h3 class="text-3xl font-tech font-bold mb-2">F-35A <span class="text-accent">CTOL</span></h3>
+                                    <p class="text-gray-400 text-sm font-tech">CONVENTIONAL TAKEOFF AND LANDING</p>
+                                </div>
+                                <div class="mb-6">
+                                    <p class="text-gray-300 mb-4">The F-35A is the conventional takeoff and landing (CTOL) variant designed for the U.S. Air Force and other air forces. It represents the most balanced 5th-generation fighter in the world.</p>
+                                    <p class="text-gray-300">This variant combines advanced stealth with supersonic speed, agility, and a comprehensive integrated sensor package.</p>
+                                </div>   
+                                <!-- Key Specifications -->
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">PRIMARY USERS</div>
+                                        <div class="font-tech">USAF & INTERNATIONAL PARTNERS</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">TOP SPEED</div>
+                                        <div class="font-tech">MACH 1.6+</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">COMBAT RADIUS</div>
+                                        <div class="font-tech">1,200+ NM</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">ARMAMENT</div>
+                                        <div class="font-tech">INTERNAL & EXTERNAL WEAPONS</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="h-px flex-1 bg-gray-800"></div>
+                                    <span class="px-4 text-sm text-gray-500 font-tech">MISSION OPTIMIZED</span>
+                                    <div class="h-px flex-1 bg-gray-800"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- F-35B Content -->
+                    <div class="variant-content hidden" id="variant-b">
+                        <div class="flex flex-col lg:flex-row items-center">
+                            <div class="lg:w-1/2 mb-10 lg:mb-0 relative">
+                                <div class="aspect-[16/9] relative">
+                                    <div class="absolute inset-0 bg-accent/10 rounded-lg overflow-hidden">
+                                        <!-- F-35B Image -->
+                                        <img src="Images/hovering_f35b.jpg" alt="F-35B STOVL Variant" class="object-cover w-full h-full">
+                                        <div class="absolute inset-0 bg-navy/30"></div>                                
+                                        <div class="absolute top-[5%] right-[35%]">
+                                            <div class="flex items-center">
+                                                <div class="bg-stealth/80 backdrop-blur-sm p-3 rounded border border-accent/30 text-xs text-gray-300 w-40">
+                                                    <span class="font-tech text-accent">LIFT FAN SYSTEM</span><br>
+                                                    Enables vertical takeoff and landing capabilities
+                                                </div>
+                                                <div class="h-px w-20 border-t-2 border-accent/50"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-4 bg-stealth/80 backdrop-blur-sm p-2 rounded text-xs font-tech">
+                                    <span class="text-gray-400">STOVL VARIANT</span>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 lg:pl-12">
+                                <div class="mb-6">
+                                    <h3 class="text-3xl font-tech font-bold mb-2">F-35B <span class="text-accent">STOVL</span></h3>
+                                    <p class="text-gray-400 text-sm font-tech">SHORT TAKEOFF/VERTICAL LANDING</p>
+                                </div>
+                                <div class="mb-6">
+                                    <p class="text-gray-300 mb-4">The F-35B is the short takeoff/vertical landing (STOVL) variant designed for the U.S. Marine Corps and international partners requiring expeditionary capabilities.</p>
+                                    <p class="text-gray-300">This revolutionary variant combines stealth technology with the ability to operate from austere bases and a range of ships.</p>
+                                </div>
+                                <!-- Key Specifications -->
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">PRIMARY USERS</div>
+                                        <div class="font-tech">USMC, UK, ITALY</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">UNIQUE CAPABILITY</div>
+                                        <div class="font-tech">VERTICAL LANDING</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">TAKEOFF DISTANCE</div>
+                                        <div class="font-tech">600 FT</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">DEPLOYMENT</div>
+                                        <div class="font-tech">SHIPS & AUSTERE BASES</div>
+                                    </div>
+                                </div>      
+                                <div class="flex items-center">
+                                    <div class="h-px flex-1 bg-gray-800"></div>
+                                    <span class="px-4 text-sm text-gray-500 font-tech">EXPEDITIONARY OPERATIONS</span>
+                                    <div class="h-px flex-1 bg-gray-800"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- F-35C Content -->
+                    <div class="variant-content hidden" id="variant-c">
+                        <div class="flex flex-col lg:flex-row items-center">
+                            <div class="lg:w-1/2 mb-10 lg:mb-0 relative">
+                                <div class="aspect-[16/9] relative">
+                                    <div class="absolute inset-0 bg-accent/10 rounded-lg overflow-hidden">
+                                        <!-- F-35C Image -->
+                                        <img src="Images/carrier_f35.jpg" alt="F-35C Carrier Variant" class="object-cover w-full h-full">
+                                        <!-- Semi-transparent overlay to ensure text readability -->
+                                        <div class="absolute inset-0 bg-navy/30"></div>                                
+                                        <!-- Distinguishing Feature Callout -->
+                                        <div class="absolute top-[50%] right-[40%]">
+                                            <div class="h-10 border-l-2 border-accent/50 -ml-2"></div>
+                                            <div class="bg-stealth/80 backdrop-blur-sm p-3 rounded border border-accent/30 text-xs text-gray-300 w-40 mt-2">
+                                                <span class="font-tech text-accent">LARGER WINGS</span><br>
+                                                33% larger wing surface for improved carrier approach handling
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-4 bg-stealth/80 backdrop-blur-sm p-2 rounded text-xs font-tech">
+                                    <span class="text-gray-400">CARRIER VARIANT</span>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 lg:pl-12">
+                                <div class="mb-6">
+                                    <h3 class="text-3xl font-tech font-bold mb-2">F-35C <span class="text-accent">CV</span></h3>
+                                    <p class="text-gray-400 text-sm font-tech">CARRIER VARIANT</p>
+                                </div>
+                                <div class="mb-6">
+                                    <p class="text-gray-300 mb-4">The F-35C is the U.S. Navy's first stealth fighter and the world's only 5th Generation, long-range stealth strike fighter designed specifically for aircraft carrier operations.</p>
+                                    <p class="text-gray-300">With its larger wings and robust landing gear, the F-35C offers exceptional slow-speed approach handling for carrier landings.</p>
+                                </div>
+                                <!-- Key Specifications -->
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">PRIMARY USERS</div>
+                                        <div class="font-tech">US NAVY</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">WING SPAN</div>
+                                        <div class="font-tech">43 FT (33% LARGER)</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">RANGE</div>
+                                        <div class="font-tech">LONGEST OF ALL VARIANTS</div>
+                                    </div>
+                                    <div class="bg-navy/50 p-4 rounded-lg border border-gray-800">
+                                        <div class="text-xs text-gray-400 mb-1">KEY FEATURE</div>
+                                        <div class="font-tech">FOLDING WINGTIPS</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="h-px flex-1 bg-gray-800"></div>
+                                    <span class="px-4 text-sm text-gray-500 font-tech">CARRIER OPERATIONS</span>
+                                    <div class="h-px flex-1 bg-gray-800"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Global Partnership Section -->
+        <section id="partnerships" class="py-20 bg-gradient-to-b from-navy via-stealth to-navy">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">International</span>
+                <h2 class="text-4xl md:text-5xl font-tech font-bold mb-4">GLOBAL <span class="text-accent">PARTNERSHIPS</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">An unprecedented coalition of nations collaborating on the world's most advanced fighter program</p>
+            </div>
+            <!-- World Map with Partner Nations -->
+            <div class="mb-16 relative">
+                <div class="p-4 bg-stealth/60 backdrop-blur-md rounded-lg border border-gray-800">
+                    <!-- Interactive World Map -->
+                    <div id="partnership-map" class="aspect-[1.78/1] relative"></div>
+                    
+                    <!-- Map Legend (outside the map container) -->
+                    <div class="flex items-center justify-center mt-4 space-x-8">
+                        <div class="flex items-center">
+                            <div class="h-3 w-3 bg-accent rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-300">Partner Nations</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="h-3 w-3 bg-accent/30 rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-300">Future Operators</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Partnership Tiers with Flags -->
+            <div class="mb-16">
+                <h3 class="font-tech text-2xl font-bold mb-8 text-center">PROGRAM <span class="text-accent">PARTNERSHIP LEVELS</span></h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Tier 1 -->
+                    <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm">
+                        <div class="text-accent font-tech text-xl mb-3 flex items-center">
+                            <span class="inline-block h-6 w-6 rounded-full bg-accent/20 mr-3 flex items-center justify-center text-sm">1</span>
+                            LEVEL ONE PARTNER
+                        </div>
+                        <p class="text-gray-300 mb-4">Full development partners with significant financial investment and industrial participation.</p>
+                        
+                        <!-- UK Partner Card -->
+                        <div class="bg-navy/40 p-3 rounded-lg border border-gray-700 flex items-center mb-2">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom" class="h-8 mr-3 rounded border border-gray-700">
+                            <div>
+                                <h4 class="font-tech text-sm">UNITED KINGDOM</h4>
+                                <p class="text-xs text-gray-400">F-35B variant operator</p>
+                            </div>
+                        </div>
+                        
+                        <!-- United States (Program Lead) -->
+                        <div class="bg-navy/40 p-3 rounded-lg border border-gray-700 flex items-center">
+                            <img src="https://flagcdn.com/w40/us.png" alt="United States" class="h-8 mr-3 rounded border border-gray-700">
+                            <div>
+                                <h4 class="font-tech text-sm">UNITED STATES</h4>
+                                <p class="text-xs text-gray-400">Program lead with all variants</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tier 2 -->
+                    <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm">
+                        <div class="text-accent font-tech text-xl mb-3 flex items-center">
+                            <span class="inline-block h-6 w-6 rounded-full bg-accent/20 mr-3 flex items-center justify-center text-sm">2</span>
+                            LEVEL TWO PARTNER
+                        </div>
+                        <p class="text-gray-300 mb-4">Medium scale investment partners with specific industrial participation opportunities.</p>
+                        
+                        <!-- Italy Partner Card -->
+                        <div class="bg-navy/40 p-3 rounded-lg border border-gray-700 flex items-center mb-2">
+                            <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="h-8 mr-3 rounded border border-gray-700">
+                            <div>
+                                <h4 class="font-tech text-sm">ITALY</h4>
+                                <p class="text-xs text-gray-400">F-35A and F-35B variants</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Netherlands Partner Card -->
+                        <div class="bg-navy/40 p-3 rounded-lg border border-gray-700 flex items-center">
+                            <img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="h-8 mr-3 rounded border border-gray-700">
+                            <div>
+                                <h4 class="font-tech text-sm">NETHERLANDS</h4>
+                                <p class="text-xs text-gray-400">F-35A variant operator</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tier 3 -->
+                    <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm">
+                        <div class="text-accent font-tech text-xl mb-3 flex items-center">
+                            <span class="inline-block h-6 w-6 rounded-full bg-accent/20 mr-3 flex items-center justify-center text-sm">3</span>
+                            LEVEL THREE PARTNER
+                        </div>
+                        <p class="text-gray-300 mb-4">Limited investment partners with focused industrial opportunities.</p>
+                        
+                        <div class="grid grid-cols-2 gap-2">
+                            <!-- Australia Partner Card -->
+                            <div class="bg-navy/40 p-2 rounded-lg border border-gray-700 flex flex-col items-center">
+                                <img src="https://flagcdn.com/w40/au.png" alt="Australia" class="h-6 mb-1 rounded">
+                                <h4 class="font-tech text-xs">AUSTRALIA</h4>
+                            </div>
+                            
+                            <!-- Canada Partner Card -->
+                            <div class="bg-navy/40 p-2 rounded-lg border border-gray-700 flex flex-col items-center">
+                                <img src="https://flagcdn.com/w40/ca.png" alt="Canada" class="h-6 mb-1 rounded">
+                                <h4 class="font-tech text-xs">CANADA</h4>
+                            </div>
+                            
+                            <!-- Denmark Partner Card -->
+                            <div class="bg-navy/40 p-2 rounded-lg border border-gray-700 flex flex-col items-center">
+                                <img src="https://flagcdn.com/w40/dk.png" alt="Denmark" class="h-6 mb-1 rounded">
+                                <h4 class="font-tech text-xs">DENMARK</h4>
+                            </div>
+                            
+                            <!-- Israel Partner Card -->
+                            <div class="bg-navy/40 p-2 rounded-lg border border-gray-700 flex flex-col items-center">
+                                <img src="https://flagcdn.com/w40/il.png" alt="Israel" class="h-6 mb-1 rounded">
+                                <h4 class="font-tech text-xs">ISRAEL</h4>
+                            </div>
+                            
+                            <!-- Norway Partner Card -->
+                            <div class="bg-navy/40 p-2 rounded-lg border border-gray-700 flex flex-col items-center">
+                                <img src="https://flagcdn.com/w40/no.png" alt="Norway" class="h-6 mb-1 rounded">
+                                <h4 class="font-tech text-xs">NORWAY</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FMS Customers Section -->
+            <div class="mb-16">
+                <h3 class="font-tech text-xl font-bold mb-6 text-center">FOREIGN MILITARY SALES <span class="text-accent">CUSTOMERS</span></h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Japan Partner Card -->
+                    <div class="bg-stealth/40 p-3 rounded-lg border border-gray-700 flex items-center">
+                        <img src="https://flagcdn.com/w40/jp.png" alt="Japan" class="h-8 mr-3 rounded border border-gray-700">
+                        <div>
+                            <h4 class="font-tech text-sm">JAPAN</h4>
+                            <p class="text-xs text-gray-400">F-35A and F-35B</p>
+                        </div>
+                    </div>
+                    
+                    <!-- South Korea Partner Card -->
+                    <div class="bg-stealth/40 p-3 rounded-lg border border-gray-700 flex items-center">
+                        <img src="https://flagcdn.com/w40/kr.png" alt="South Korea" class="h-8 mr-3 rounded border border-gray-700">
+                        <div>
+                            <h4 class="font-tech text-sm">SOUTH KOREA</h4>
+                            <p class="text-xs text-gray-400">F-35A</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Poland Partner Card -->
+                    <div class="bg-stealth/40 p-3 rounded-lg border border-gray-700 flex items-center">
+                        <img src="https://flagcdn.com/w40/pl.png" alt="Poland" class="h-8 mr-3 rounded border border-gray-700">
+                        <div>
+                            <h4 class="font-tech text-sm">POLAND</h4>
+                            <p class="text-xs text-gray-400">F-35A</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Belgium Partner Card -->
+                    <div class="bg-stealth/40 p-3 rounded-lg border border-gray-700 flex items-center">
+                        <img src="https://flagcdn.com/w40/be.png" alt="Belgium" class="h-8 mr-3 rounded border border-gray-700">
+                        <div>
+                            <h4 class="font-tech text-sm">BELGIUM</h4>
+                            <p class="text-xs text-gray-400">F-35A</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Program Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">14+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Partner Nations</div>
+                </div>
+                
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">900+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Aircraft Delivered</div>
+                </div>
+                
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">500K+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Direct & Indirect Jobs</div>
+                </div>
+                
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">3</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Operational Variants</div>
+                </div>
+            </div>
+    </div>
+</section>
+<!-- Full-Width F-35 Showcase Section -->
+<section class="relative">
+    <!-- Large Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="Images/formation_f35.avif" alt="F-35 in flight" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/50 to-navy/80"></div>
+    </div>
+    
+    <!-- Content Overlay -->
+    <div class="relative z-10 py-32 px-4 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row items-center">
+            <!-- Left Column - Headline and Description -->
+            <div class="lg:w-1/2 mb-10 lg:mb-0">
+                <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3 backdrop-blur-sm">The Future of Air Power</span>
+                <h2 class="text-4xl md:text-5xl font-tech font-bold mb-4 text-white">REDEFINING <span class="text-accent">AIR DOMINANCE</span></h2>
+                <p class="text-xl text-gray-200 mb-8 max-w-xl backdrop-blur-sm bg-navy/30 p-4 rounded-lg">The F-35 represents a new standard in weapon systems integration, maintainability, combat radius and payload capacity, combining advanced stealth with fighter speed and agility.</p>
+                
+                <!-- Stat Highlights -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-stealth/60 backdrop-blur-sm p-4 rounded-lg border border-accent/30 text-center">
+                        <div class="text-2xl font-tech font-bold text-accent">9G</div>
+                        <div class="text-gray-300 text-xs uppercase tracking-wider">Max G-Force</div>
+                    </div>
+                    <div class="bg-stealth/60 backdrop-blur-sm p-4 rounded-lg border border-accent/30 text-center">
+                        <div class="text-2xl font-tech font-bold text-accent">1.6+</div>
+                        <div class="text-gray-300 text-xs uppercase tracking-wider">Mach Speed</div>
+                    </div>
+                    <div class="bg-stealth/60 backdrop-blur-sm p-4 rounded-lg border border-accent/30 text-center">
+                        <div class="text-2xl font-tech font-bold text-accent">360°</div>
+                        <div class="text-gray-300 text-xs uppercase tracking-wider">Situational Awareness</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Interactive Element -->
+            <div class="lg:w-1/2 lg:pl-12">
+                <div class="relative">
+                    <!-- Highlight Box with Tech Callouts -->
+                    <div class="bg-stealth/80 backdrop-blur-lg p-6 rounded-lg border border-accent/30 relative">
+                        <h3 class="font-tech text-2xl font-bold mb-4 text-white">ADVANCED <span class="text-accent">CAPABILITIES</span></h3>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 h-6 w-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5 mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-tech text-lg text-accent">SENSOR FUSION</h4>
+                                    <p class="text-gray-300 text-sm">Combines data from all sensors to create a single integrated picture of the battlefield</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 h-6 w-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5 mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-tech text-lg text-accent">ADVANCED AVIONICS</h4>
+                                    <p class="text-gray-300 text-sm">Next-generation systems provide unprecedented situational awareness</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 h-6 w-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5 mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-tech text-lg text-accent">STEALTH TECHNOLOGY</h4>
+                                    <p class="text-gray-300 text-sm">Very Low Observable design enables penetration of sophisticated enemy defenses</p>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <!-- Decorative Element -->
+                        <div class="absolute -bottom-4 -right-4 h-24 w-24 border-r-2 border-b-2 border-accent/30 rounded-br-xl"></div>
+                    </div>
+                    
+                    <!-- Tech Pattern Overlay -->
+                    <div class="absolute -bottom-8 -left-8 h-40 w-40 bg-grid-overlay opacity-30 z-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Operational History Section -->
+<section id="operations" class="py-20 bg-gradient-to-b from-navy via-stealth to-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Combat Proven</span>
+            <h2 class="text-4xl md:text-5xl font-tech font-bold mb-4">OPERATIONAL <span class="text-accent">HISTORY</span></h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">From concept to combat, the evolution of the world's most advanced multi-role fighter</p>
+        </div>
+        
+        <!-- Vertical Timeline -->
+        <div class="relative">
+            <!-- Timeline Center Line -->
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-accent/30"></div>
+            <!-- Timeline Progress Indicator -->
+            <div class="timeline-progress hidden md:block"></div>
+            
+            <!-- Timeline Events -->
+            <div class="space-y-16">
+    <!-- 2006: First Flight -->
+    <div class="relative flex flex-col md:flex-row items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-30"></span>
+        </div>
+        
+        <!-- Left Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-12 md:text-right">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2006</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2006</span>
+                <div class="h-px w-24 ml-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Right Content (Details) -->
+        <div class="md:w-1/2 md:pl-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-gray-800 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/first_f35.jpg" alt="F-35 First Flight" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <h3 class="font-tech text-xl font-bold mb-2">FIRST FLIGHT</h3>
+                    <p class="text-gray-300 mb-4">The F-35A completed its maiden flight from Lockheed Martin's Fort Worth facility, marking the beginning of the flight test program.</p>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">December 15, 2006</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2011: USAF Training -->
+    <div class="relative flex flex-col md:flex-row-reverse items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10"></div>
+        
+        <!-- Right Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pl-12">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2011</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2011</span>
+                <div class="h-px w-24 mr-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Left Content (Details) -->
+        <div class="md:w-1/2 md:pr-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-gray-800 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/usaf_training.avif" alt="USAF Training" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <h3 class="font-tech text-xl font-bold mb-2">USAF TRAINING BEGINS</h3>
+                    <p class="text-gray-300 mb-4">The first F-35A was delivered to Eglin Air Force Base, Florida, where the joint training program for pilots and maintainers was established.</p>
+                    <div class="flex items-center md:justify-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">July 14, 2011</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2015: US Marine Corps IOC -->
+    <div class="relative flex flex-col md:flex-row items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10"></div>
+        
+        <!-- Left Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-12 md:text-right">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2015</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2015</span>
+                <div class="h-px w-24 ml-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Right Content (Details) -->
+        <div class="md:w-1/2 md:pl-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-gray-800 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/f35b_marines.JPG" alt="Marine Corps IOC" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <h3 class="font-tech text-xl font-bold mb-2">MARINE CORPS DECLARES IOC</h3>
+                    <p class="text-gray-300 mb-4">The US Marine Corps declared Initial Operational Capability (IOC) for the F-35B, becoming the first service branch to integrate the Lightning II into its fleet.</p>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">July 31, 2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2016: First International Deployment -->
+    <div class="relative flex flex-col md:flex-row-reverse items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10"></div>
+        
+        <!-- Right Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pl-12">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2016</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2016</span>
+                <div class="h-px w-24 mr-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Left Content (Details) -->
+        <div class="md:w-1/2 md:pr-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-gray-800 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/f_35_farnborough.jpeg" alt="International Debut" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <h3 class="font-tech text-xl font-bold mb-2">INTERNATIONAL DEBUT</h3>
+                    <p class="text-gray-300 mb-4">The F-35 made its international airshow debut at the Farnborough International Airshow in the UK and the Royal International Air Tattoo, showcasing its capabilities to the world.</p>
+                    <div class="flex items-center md:justify-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">July 12, 2016</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2018: First Combat Mission -->
+    <div class="timeline-entry relative flex flex-col md:flex-row items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="timeline-marker absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-30"></span>
+        </div>
+        
+        <!-- Left Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-12 md:text-right">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2018</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2018</span>
+                <div class="h-px w-24 ml-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Right Content (Details) -->
+        <div class="md:w-1/2 md:pl-12">
+            <div class="timeline-details bg-stealth/60 backdrop-blur-sm rounded-lg border border-accent/30 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/f_35i_adir.jpg" alt="First Combat Mission" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <div class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20 mb-2">
+                        <span class="font-tech text-accent text-xs">MILESTONE</span>
+                    </div>
+                    <h3 class="font-tech text-xl font-bold mb-2">FIRST COMBAT MISSION</h3>
+                    <p class="text-gray-300 mb-4">The F-35 saw its first combat use with the Israeli Air Force, making the "Adir" the first F-35 worldwide to participate in operational strike missions. Shortly after, USMC F-35Bs conducted strikes in Afghanistan.</p>
+                    
+                    <!-- Expanded content that shows on click -->
+                    <div class="timeline-expanded-content border-t border-gray-700 pt-4 mt-4">
+                        <h4 class="font-tech text-lg text-accent mb-3">MISSION DETAILS</h4>
+                        <p class="text-gray-300 mb-3">In May 2018, Israeli Air Force Major General Amikam Norkin announced that Israel had used its F-35I "Adir" fighters to conduct airstrikes on at least two occasions, making Israel the first country to use the F-35 in combat operations.</p>
+                        <p class="text-gray-300 mb-3">Following Israel's use, the United States Marine Corps F-35Bs deployed with the 13th Marine Expeditionary Unit conducted their first combat strikes against Taliban targets in Afghanistan on September 27, 2018.</p>
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-navy/40 p-3 rounded">
+                                <span class="text-xs text-gray-400">FIRST OPERATOR IN COMBAT</span>
+                                <p class="font-tech text-white">ISRAEL</p>
+                            </div>
+                            <div class="bg-navy/40 p-3 rounded">
+                                <span class="text-xs text-gray-400">FIRST US STRIKES</span>
+                                <p class="font-tech text-white">AFGHANISTAN</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <span class="inline-block px-3 py-1 text-xs text-accent border border-accent/30 rounded-full">Click to collapse</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">May 2018</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2019: UK First Carrier Ops -->
+    <div class="relative flex flex-col md:flex-row-reverse items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10"></div>
+        
+        <!-- Right Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pl-12">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2019</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2019</span>
+                <div class="h-px w-24 mr-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Left Content (Details) -->
+        <div class="md:w-1/2 md:pr-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-gray-800 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/uk_f35.avif" alt="UK Carrier Operations" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <h3 class="font-tech text-xl font-bold mb-2">UK CARRIER OPERATIONS</h3>
+                    <p class="text-gray-300 mb-4">The United Kingdom began F-35B flight operations aboard HMS Queen Elizabeth, marking a return to carrier aviation for the Royal Navy and establishing a new era in UK maritime power projection.</p>
+                    <div class="flex items-center md:justify-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">October 13, 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2021: First Tri-Carrier Ops -->
+    <div class="relative flex flex-col md:flex-row items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10"></div>
+        
+        <!-- Left Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-12 md:text-right">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2021</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2021</span>
+                <div class="h-px w-24 ml-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Right Content (Details) -->
+        <div class="md:w-1/2 md:pl-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-gray-800 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/all_3_f35s.jpg" alt="All Variants Deployed" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <h3 class="font-tech text-xl font-bold mb-2">ALL VARIANTS DEPLOYED</h3>
+                    <p class="text-gray-300 mb-4">For the first time, all three F-35 variants operated simultaneously from U.S. Navy carriers and amphibious ships in the Indo-Pacific region, demonstrating unprecedented maritime strike capability.</p>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">March 15, 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2023: Block 4 Upgrades -->
+    <div class="relative flex flex-col md:flex-row-reverse items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-30"></span>
+        </div>
+        
+        <!-- Right Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pl-12">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2023</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2023</span>
+                <div class="h-px w-24 mr-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Left Content (Details) -->
+        <div class="md:w-1/2 md:pr-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-accent/30 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/block_4_f35.webp" alt="Block 4 Upgrades" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <div class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20 mb-2">
+                        <span class="font-tech text-accent text-xs">MILESTONE</span>
+                    </div>
+                    <h3 class="font-tech text-xl font-bold mb-2">BLOCK 4 & TR-3 INTEGRATION</h3>
+                    <p class="text-gray-300 mb-4">The F-35 program began integrating Technology Refresh 3 (TR-3) hardware and Block 4 software upgrades, significantly enhancing the aircraft's computing power, display capabilities and weapons capacity.</p>
+                    <div class="flex items-center md:justify-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">January 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 2025: F-35 Enterprise Growth -->
+    <div class="relative flex flex-col md:flex-row items-center md:justify-between">
+        <!-- Timeline Marker -->
+        <div class="absolute hidden md:flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-accent z-10">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-30"></span>
+        </div>
+        
+        <!-- Left Content (Date) -->
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-12 md:text-right">
+            <div class="md:hidden mb-2 inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20">
+                <span class="font-tech text-accent text-sm">2025</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="font-tech text-accent text-4xl">2025</span>
+                <div class="h-px w-24 ml-auto mt-3 bg-accent/50"></div>
+            </div>
+        </div>
+        
+        <!-- Right Content (Details) -->
+        <div class="md:w-1/2 md:pl-12">
+            <div class="bg-stealth/60 backdrop-blur-sm rounded-lg border border-accent/30 overflow-hidden">
+                <!-- Timeline Event Image -->
+                <div class="aspect-[16/9] w-full overflow-hidden">
+                    <img src="Images/f35_fleet.avif" alt="Global Fleet Expansion" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Timeline Event Content -->
+                <div class="p-5">
+                    <div class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent/20 mb-2">
+                        <span class="font-tech text-accent text-xs">CURRENT</span>
+                    </div>
+                    <h3 class="font-tech text-xl font-bold mb-2">GLOBAL FLEET EXPANSION</h3>
+                    <p class="text-gray-300 mb-4">The global F-35 fleet surpasses 1,000 aircraft, with operations across 20+ bases worldwide and more than 10 nations actively flying missions. The program continues to expand its capabilities and international reach.</p>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm text-gray-400">Present Day</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        
+        <!-- Combat Operations Statistics -->
+        <div class="mt-24">
+            <h3 class="font-tech text-2xl font-bold mb-8 text-center">COMBAT <span class="text-accent">OPERATIONS</span></h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">7+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Years in Combat</div>
+                </div>
+                
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">5+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Combat Theaters</div>
+                </div>
+                
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">4</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Partner Nations in Combat</div>
+                </div>
+                
+                <div class="bg-stealth/60 p-6 rounded-lg border border-gray-800 backdrop-blur-sm text-center">
+                    <div class="text-4xl font-tech font-bold text-accent mb-2">2000+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wider">Combat Sorties</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="py-20 bg-gradient-to-b from-navy via-stealth to-navy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 bg-accent/20 text-accent font-tech uppercase tracking-widest text-xs font-semibold rounded-sm mb-3">Visual Showcase</span>
+                <h2 class="text-4xl md:text-5xl font-tech font-bold mb-4">MEDIA <span class="text-accent">GALLERY</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Explore the world's most advanced fighter aircraft through high-quality imagery</p>
+            </div>
+
+            <!-- Gallery Filter Controls -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="gallery-filter active px-4 py-2 bg-stealth hover:bg-accent/20 border border-gray-700 rounded-md font-tech text-sm transition-all" data-filter="all">
+                    ALL
+                </button>
+                <button class="gallery-filter px-4 py-2 bg-stealth hover:bg-accent/20 border border-gray-700 rounded-md font-tech text-sm transition-all" data-filter="air-to-air">
+                    AIR-TO-AIR
+                </button>
+                <button class="gallery-filter px-4 py-2 bg-stealth hover:bg-accent/20 border border-gray-700 rounded-md font-tech text-sm transition-all" data-filter="carrier">
+                    CARRIER OPS
+                </button>
+                <button class="gallery-filter px-4 py-2 bg-stealth hover:bg-accent/20 border border-gray-700 rounded-md font-tech text-sm transition-all" data-filter="weapons">
+                    WEAPONS
+                </button>
+                <button class="gallery-filter px-4 py-2 bg-stealth hover:bg-accent/20 border border-gray-700 rounded-md font-tech text-sm transition-all" data-filter="formation">
+                    FORMATION
+                </button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="gallery-item group" data-category="air-to-air">
+                    <div class="overflow-hidden rounded-lg border border-gray-800 bg-stealth/40 aspect-[3/2] relative">
+                        <img src="Images/flyover_f35.avif"F-35 in flight" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h4 class="font-tech text-white text-lg">F-35A Lightning II</h4>
+                            <p class="text-gray-300 text-sm">High altitude air-to-air profile</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="gallery-item group" data-category="carrier">
+                    <div class="overflow-hidden rounded-lg border border-gray-800 bg-stealth/40 aspect-[3/2] relative">
+                        <img src="Images/f35c_carrier.webp" alt="F-35C on carrier" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h4 class="font-tech text-white text-lg">Carrier Operations</h4>
+                            <p class="text-gray-300 text-sm">F-35C conducting carrier qualifications</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="gallery-item group" data-category="air-to-air">
+                    <div class="overflow-hidden rounded-lg border border-gray-800 bg-stealth/40 aspect-[3/2] relative">
+                        <img src="Images/f35_clouds.png" alt="F-35 with clouds" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h4 class="font-tech text-white text-lg">Cloud Formations</h4>
+                            <p class="text-gray-300 text-sm">F-35 cruising above cloud layer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 4 -->
+                <div class="gallery-item group" data-category="weapons">
+                    <div class="overflow-hidden rounded-lg border border-gray-800 bg-stealth/40 aspect-[3/2] relative">
+                        <img src="Images/weapons_bay.jpg" alt="F-35 weapons bay" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h4 class="font-tech text-white text-lg">Weapons Integration</h4>
+                            <p class="text-gray-300 text-sm">Internal weapons bay configuration</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 5 -->
+                <div class="gallery-item group" data-category="formation">
+                    <div class="overflow-hidden rounded-lg border border-gray-800 bg-stealth/40 aspect-[3/2] relative">
+                        <img src="Images/f35_fly_formation.png" alt="F-35 formation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h4 class="font-tech text-white text-lg">Formation Flight</h4>
+                            <p class="text-gray-300 text-sm">Squadron-level tactical formation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 6 -->
+                <div class="gallery-item group" data-category="carrier">
+                    <div class="overflow-hidden rounded-lg border border-gray-800 bg-stealth/40 aspect-[3/2] relative">
+                        <img src="Images/landing_f35b.jpg" alt="F-35B vertical landing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h4 class="font-tech text-white text-lg">Vertical Landing</h4>
+                            <p class="text-gray-300 text-sm">F-35B STOVL capabilities demonstration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Showcase -->
+            <div class="mt-16">
+                <h3 class="font-tech text-2xl font-bold mb-8 text-center">VIDEO <span class="text-accent">HIGHLIGHTS</span></h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Video 1 -->
+                    <div class="bg-stealth/60 backdrop-blur-sm p-2 rounded-lg border border-gray-800">
+                        <div class="aspect-video w-full">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/YBR4E-bRcck" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-tech text-lg mb-1">F-35 Capabilities Overview</h4>
+                            <p class="text-sm text-gray-400">Official demonstration of key F-35 capabilities and mission profiles</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 -->
+                    <div class="bg-stealth/60 backdrop-blur-sm p-2 rounded-lg border border-gray-800">
+                        <div class="aspect-video w-full">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/zW28Mb1YvwY?si=EswNBknsJpj_Cbip" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-tech text-lg mb-1">F-35B Vertical Landing</h4>
+                            <p class="text-sm text-gray-400">Demonstration of the F-35B's unique STOVL capabilities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
+<footer class="bg-stealth py-16 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Column 1: Logo & Description -->
+            <div class="md:col-span-1">
+                <div class="flex items-center mb-5">
+                    <!-- Logo Image (Added from navbar) -->
+                    <a href="../Home-Page/index.html" class="mr-2">
+                        <img src="Images/logo.png" alt="F-35 Lightning II Logo" class="h-8 w-auto">
+                    </a>
+                    <!-- Brand name -->
+                    <span class="font-tech font-bold text-lg text-white tracking-wider">F-35<span class="text-accent">LIGHTNING II</span></span>
+                </div>
+                <p class="text-gray-400 text-sm mb-6">An educational resource about the F-35 Lightning II Joint Strike Fighter program.</p>
+                <p class="text-xs text-gray-500">This site is for informational purposes only and is not affiliated with Lockheed Martin, the Department of Defense, or any official F-35 program entities.</p>
+            </div>
+            <!-- Column 2: Quick Links -->
+            <div class="md:col-span-1">
+                <h4 class="font-tech text-lg mb-5 text-white">QUICK LINKS</h4>
+                <ul class="space-y-3">
+                    <li><a href="#variants" class="text-gray-400 hover:text-accent transition-colors text-sm">Variants</a></li>
+                    <li><a href="#partnerships" class="text-gray-400 hover:text-accent transition-colors text-sm">Global Partnerships</a></li>
+                    <li><a href="#operations" class="text-gray-400 hover:text-accent transition-colors text-sm">Operational History</a></li>
+                    <li><a href="#gallery" class="text-gray-400 hover:text-accent transition-colors text-sm">Media Gallery</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Resources -->
+            <div class="md:col-span-1">
+                <h4 class="font-tech text-lg mb-5 text-white">RESOURCES</h4>
+                <ul class="space-y-3">
+                    <li><a href="../Specifications/specifications.html" class="text-gray-400 hover:text-accent transition-colors text-sm">Technical Specifications</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-accent transition-colors text-sm">F-35 Variants Comparison</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-accent transition-colors text-sm">About This Project</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-accent transition-colors text-sm">Image Credits</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 4: Newsletter -->
+            <div class="md:col-span-1">
+                <h4 class="font-tech text-lg mb-5 text-white">UPDATES</h4>
+                <p class="text-gray-400 text-sm mb-4">Stay informed about updates to this educational resource.</p>
+                <form class="space-y-3">
+                    <div>
+                        <input type="email" placeholder="Your email address" class="w-full bg-navy/70 text-white border border-gray-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent">
+                    </div>
+                    <button type="submit" class="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Bottom Section -->
+        <div class="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-xs mb-4 md:mb-0">© 2025 F-35 Information Resource. Not affiliated with any official F-35 program entities.</p>
+            <div class="flex space-x-6">
+                <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-accent">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="GitHub" class="text-gray-400 hover:text-accent">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-accent">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</script>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
